@@ -1,2 +1,15 @@
 <p>page-list-orders works!</p>
 {{ id }}
+
+
+<div>
+  <h2>Exemple Order</h2>
+  <p>ID: {{ order.id }}</p>
+  <p>tjmHT: {{ order.tjmHT }}</p>
+  <p>Total HT: {{ order.totalHT() }}</p>
+</div>
+
+<div>
+  <h2>Exemple Order pipe</h2>
+  <p>{{ order | json }}</p>
+</div>

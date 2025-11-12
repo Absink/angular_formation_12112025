@@ -12,7 +12,7 @@ import { Navbar } from './core/navbar/navbar';
 export class App implements OnInit {
   
   ngOnInit(): void {
-    localStorage.removeItem('userFormation');
+    // localStorage.removeItem('userFormation');
   }
 
 }
