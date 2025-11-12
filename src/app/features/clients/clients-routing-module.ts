@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageListOrders } from './page-list-orders/page-list-orders';
+import { PageListClients } from './page-list-clients/page-list-clients';
 
 const routes: Routes = [
-  { path: '', component: PageListOrders },
-  { path: ':idOrder', component: PageListOrders }
+  { path: '', component: PageListClients }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class OrdersRoutingModule { }
+export class ClientsRoutingModule { }
