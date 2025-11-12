@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-page-home',
@@ -6,6 +6,19 @@ import { Component } from '@angular/core';
   templateUrl: './page-home.html',
   styleUrl: './page-home.scss',
 })
-export class PageHome {
+export class PageHome implements OnInit {
+
+  public myUser = "";
+  
+  
+  ngOnInit(): void {
+    localStorage.setItem('userConnected', 'Joe');
+  }
+
+  login(): void {
+    this.myUser = localStorage.getItem('userConnected')!;
+    // localStorage.removeItem('userConnected');
+    // localStorage.clear();
+  }
 
 }

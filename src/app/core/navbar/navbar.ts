@@ -14,7 +14,12 @@ export class Navbar {
   userConnected!: string;
 
   login(): void {
-    this.userConnected = "John";
+    this.userConnected = localStorage.getItem('userFormation')!;
+    if (!this.userConnected)   
+      localStorage.setItem('userFormation', 'Ben');
+    else
+      localStorage.removeItem('userFormation');
+    this.userConnected = localStorage.getItem('userFormation')!;
   }
 
 }

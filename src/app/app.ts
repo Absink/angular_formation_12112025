@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Exemple } from './shared/components/exemple/exemple';
 import { Navbar } from './core/navbar/navbar';
@@ -9,6 +9,10 @@ import { Navbar } from './core/navbar/navbar';
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
-  protected readonly title = signal('formation');
+export class App implements OnInit {
+  
+  ngOnInit(): void {
+    localStorage.removeItem('userFormation');
+  }
+
 }

@@ -10,6 +10,9 @@ export const routes: Routes = [
     loadChildren: () => import("./features/orders/orders-module").then(m => m.OrdersModule),
     canActivate: [authGuard]
   },
-  { path: 'clients', loadChildren: () => import("./features/clients/clients-module").then(m => m.ClientsModule)},
+  { path: 'clients',
+    loadChildren: () => import("./features/clients/clients-module").then(m => m.ClientsModule),
+    canActivate: [authGuard]
+  },
   { path: '**', component: PageNotFound }
 ];
