@@ -1,30 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
-import { StateOrder } from '../enums/state-order';
+import { map, Observable } from 'rxjs';
 import { Order } from '../models/order.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
 
-  getOrder(id?: number): Observable<Order> {
+  private api = "http://localhost:3000/orders";
 
-    if (id == 0) {
-      return throwError(() => new Error("Fake Error !"));
-    }
+  constructor(private http: HttpClient) { }
 
-    const fakeOrder = new Order({
-      id: 50,
-      typePresta: 'Formation Angular',
-      client: '',
-      date: new Date(),
-      tjmHT: 550,
-      nbJours: 2,
-      state: StateOrder.CONFIRMED
-    });
-
-    return of(fakeOrder);
+  public getAll(): Observable<Order[]> {
+    return this.http.get<Order[]>(this.api).pipe(
+      map(datas => datas.map(
+        data => new Order(data)
+      ))
+    );
   }
-  
+
+  public delete(): Observable<Order> {
+    return this.http.delete<Order>(this.api + "/1").pipe();
+  }
+ 
 }

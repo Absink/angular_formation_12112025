@@ -16,16 +16,13 @@ export class PageListOrders implements OnInit {
   private orderService = inject(OrderService);
 
   public id = this.route.snapshot.params['idOrder'];
-  public order: Order = new Order();
+  public orders: Order[] = [];
 
   ngOnInit(): void {
-    this.orderService.getOrder().subscribe({
-      next: (x) => (this.order = x),
+    this.orderService.getAll().subscribe({
+      next: (x) => (this.orders = x),
       error: (err) => console.log(err)
     });
-    // this.order.id = 17;
-    // this.order.client = "Client 1";
-    // this.order.nbJours = 3;
   }
 
 }

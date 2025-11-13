@@ -23,10 +23,10 @@ export class PageDetailsClient implements OnInit {
 
 
   ngOnInit(): void {
-    this.clientService.getClient(this.id).subscribe({
-      next: (data) => this.currentClient = data,
-      error: (err) => this.currentClient = err
-    })
+    // this.clientService.getClient(this.id).subscribe({
+    //   next: (data) => this.currentClient = data,
+    //   error: (err) => this.currentClient = err
+    // })
   }
   
   goListing(): void {

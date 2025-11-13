@@ -1,0 +1,102 @@
+{
+  "orders": [
+    {
+      "tjmHT": 1200,
+      "nbJours": 1,
+      "tva": 20,
+      "state": "CANCEL",
+      "typePresta": "Formation",
+      "client": "Airbous",
+      "comment": "merci airbous",
+      "id": 1,
+      "date": "2020-01-01"
+    },
+    {
+      "tjmHT": 1200,
+      "nbJours": 1,
+      "tva": 20,
+      "state": "CONFIRMED",
+      "typePresta": "Formation",
+      "client": "Bobo",
+      "comment": "",
+      "id": 2,
+      "date": "2021-05-04"
+    },
+    {
+      "tjmHT": 500,
+      "nbJours": 1,
+      "tva": 20,
+      "state": "OPTION",
+      "typePresta": "Formation",
+      "client": "nemesazazys",
+      "comment": "",
+      "id": 3,
+      "date": "2019-01-01"
+    },
+    {
+      "tjmHT": 700,
+      "nbJours": 5,
+      "tva": 20,
+      "state": "OPTION",
+      "typePresta": "Prestation",
+      "client": "Atas",
+      "comment": "Comment pour Atas",
+      "id": 4,
+      "date": "2023-11-09"
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "tva": 20,
+      "state": "Active",
+      "name": "Bendoi",
+      "ca": 8000,
+      "comment": ""
+    },
+    {
+      "tva": 20,
+      "state": "Inactive",
+      "name": "Modias",
+      "ca": 120000,
+      "comment": "Un comment pour client Modias",
+      "id": 2
+    },
+    {
+      "tva": 20,
+      "state": "Active",
+      "name": "Mobilo",
+      "ca": 5000,
+      "comment": "",
+      "id": 3
+    },
+    {
+      "tva": 20,
+      "state": "Inactive",
+      "name": "Tete",
+      "ca": 75000,
+      "comment": "RAS",
+      "id": 4
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "role": "ADMIN"
+    },
+    {
+      "id": 2,
+      "username": "user1",
+      "password": "user1",
+      "role": "USER"
+    },
+    {
+      "id": 3,
+      "username": "user2",
+      "password": "user2",
+      "role": "USER"
+    }
+  ]
+}

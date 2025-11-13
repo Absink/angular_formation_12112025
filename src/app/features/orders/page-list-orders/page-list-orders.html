@@ -1,15 +1,30 @@
 <p>page-list-orders works!</p>
-{{ id }}
 
 
-<div>
-  <h2>Exemple Order</h2>
-  <p>ID: {{ order.id }}</p>
-  <p>tjmHT: {{ order.tjmHT }}</p>
-  <p>Total HT: {{ order.totalHT() }}</p>
-</div>
+<div>>Liste des orders</div>
+@for (order of orders; track order.id) {
+  <div>{{ order.id }} - {{order .tjmHT }} </div>
+} @empty {
+  <p>Aucun Order dispo !</p>
+}
 
-<div>
-  <h2>Exemple Order pipe</h2>
-  <p>{{ order | json }}</p>
-</div>
+
+<div>>Liste des orders (TJ > 1000)</div>
+@for (order of orders; track order.id) {
+  @if(order.tjmHT > 1000) {
+    <div>{{ order.id }} - {{order .tjmHT }} </div>
+  } 
+}
+
+
+
+<div>>Liste des orders</div>
+  <div *ngFor="let order of orders">{{ order.id }} - {{order .tjmHT }} </div>
+
+
+<div>>Liste des orders (TJ > 1000)</div>
+@for (order of orders; track order.id) {
+  @if(order.tjmHT > 1000) {
+    <div>{{ order.id }} - {{order .tjmHT }} </div>
+  } 
+}
