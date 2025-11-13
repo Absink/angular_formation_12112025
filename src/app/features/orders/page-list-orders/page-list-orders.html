@@ -1,9 +1,60 @@
 <p>page-list-orders works!</p>
 
 
+<div>Exemple de Directives x2</div>
+@for (order of orders; track order.id) {
+  <div [appColorState]="order.state">{{ order.id }}: Formation sur
+    <span [appColorDays]="order.nbJours">{{ order.nbJours | days }}</span>
+  </div>
+}
+<br><br>
+
+
+<div>Exemple de Directive colorDays</div>
+@for (order of orders; track order.id) {
+  <div [appColorDays]="order.nbJours">{{ order.id }}: Formation sur {{ order.nbJours | days }}</div>
+}
+<br><br>
+
+
+<div>Exemple de Directive colorState</div>
+@for (order of orders; track order.id) {
+  <div [appColorState]="order.state">{{ order.id }}: Formation sur {{ order.nbJours | days }}</div>
+}
+<br><br>
+
+
+<div>Exemple de Pipe Date</div>
+<div>{{ orders[0].date }}</div>
+<div>{{ orders[0].date | date }}</div>
+<div>{{ orders[0].date | date: 'short' }}</div>
+<div>{{ orders[0].date | date: 'dd/MM/yyyy' }}</div>
+<br><br>
+
+
+<div>Exemple de Pipe Currency</div>
+<div>{{ orders[0].tjmHT | currency }}</div>
+<div>{{ orders[0].tjmHT | currency: 'EUR' }}</div>
+<br><br>
+
+
+<div>Exemple de Pipe Total</div>
+<div>{{ orders[0] | total: 'TTC' | currency: 'EUR' }}</div>
+<div>{{ orders[0] | total | currency: 'EUR' }}</div>
+<br><br>
+
+
+<div>Exemple de Pipe Jour (TP)</div>
+@for (order of orders; track order.id) {
+  <div>{{ order.id }}: Formation sur {{ order.nbJours | days }}</div>
+}
+<br><br>
+
+
+
 <div>>Liste des orders</div>
 @for (order of orders; track order.id) {
-  <div>{{ order.id }} - {{order .tjmHT }} </div>
+  <div>{{ order.id }} - {{ order .tjmHT }} </div>
 } @empty {
   <p>Aucun Order dispo !</p>
 }

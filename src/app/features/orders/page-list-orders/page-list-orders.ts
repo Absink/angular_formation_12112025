@@ -3,10 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Order } from '../../../shared/models/order.model';
 import { CommonModule } from '@angular/common';
 import { OrderService } from '../../../shared/services/order-service';
+import { TotalPipe } from '../../../shared/pipes/total.pipe';
+import { DaysPipe } from "../../../shared/pipes/days.pipe";
+import { ColorState } from '../../../shared/directives/color-state';
+import { ColorDays } from "../../../shared/directives/color-days";
 
 @Component({
   selector: 'app-page-list-orders',
-  imports: [CommonModule],
+  imports: [CommonModule, TotalPipe, DaysPipe, ColorState, ColorDays],
   templateUrl: './page-list-orders.html',
   styleUrl: './page-list-orders.scss',
 })
