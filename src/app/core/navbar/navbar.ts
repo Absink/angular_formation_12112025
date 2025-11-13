@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IconLogin } from '../../shared/components/icon-login/icon-login';
-import { RouterModule } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -10,16 +10,18 @@ import { RouterModule } from "@angular/router";
 })
 export class Navbar {
 
+  private router = inject(Router);
+
   title: string = "Formation";
-  userConnected!: string;
 
   login(): void {
-    this.userConnected = localStorage.getItem('userFormation')!;
-    if (!this.userConnected)   
-      localStorage.setItem('userFormation', 'Ben');
+    if (localStorage.getItem('userFormation')) {
+      this.router.navigateByUrl('/login');
+
+    }  
+
     else
       localStorage.removeItem('userFormation');
-    this.userConnected = localStorage.getItem('userFormation')!;
   }
 
 }

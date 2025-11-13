@@ -2,10 +2,12 @@ import { Routes } from '@angular/router';
 import { PageHome } from './features/others/page-home/page-home';
 import { PageNotFound } from './features/others/page-not-found/page-not-found';
 import { authGuard } from './core/auth-guard';
+import { PageLogin } from './features/others/page-login/page-login';
 
 export const routes: Routes = [
-  { path: 'home', component: PageHome },
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'login', component: PageLogin },
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'home', component: PageHome, canActivate: [authGuard] },
   { path: 'orders', 
     loadChildren: () => import("./features/orders/orders-module").then(m => m.OrdersModule),
     canActivate: [authGuard]

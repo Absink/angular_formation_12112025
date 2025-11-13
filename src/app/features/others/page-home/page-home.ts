@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../../shared/models/user.model';
 
 @Component({
   selector: 'app-page-home',
@@ -8,17 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageHome implements OnInit {
 
-  public myUser = "";
+  public myUser!: User;
   
   
   ngOnInit(): void {
-    localStorage.setItem('userConnected', 'Joe');
-  }
-
-  login(): void {
-    this.myUser = localStorage.getItem('userConnected')!;
-    // localStorage.removeItem('userConnected');
-    // localStorage.clear();
+    this.myUser = new User(JSON.parse(localStorage.getItem('userFormation')!));
   }
 
 }
