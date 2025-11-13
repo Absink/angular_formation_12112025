@@ -1,10 +1,11 @@
 <p>page-list-orders works!</p>
 
-<div>Exemple ngClass</div>
+<div>Exemple ngClass + bouton output</div>
 <div class="state-CANCEL">TEST NG CLASS</div>
 <div [ngClass]="{
   'state-CANCEL': true
 }">
+<app-btn (clicked)="test()"></app-btn>
 </div>
 
 

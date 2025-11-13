@@ -8,10 +8,13 @@ import { DaysPipe } from "../../../shared/pipes/days.pipe";
 import { ColorState } from '../../../shared/directives/color-state';
 import { ColorDays } from "../../../shared/directives/color-days";
 import { TableFormation } from '../../../shared/components/table-formation/table-formation';
+import { Btn } from '../../../shared/components/btn/btn';
 
 @Component({
   selector: 'app-page-list-orders',
-  imports: [CommonModule, TotalPipe, DaysPipe, ColorState, ColorDays, TableFormation],
+  imports: [CommonModule, TotalPipe, DaysPipe, 
+    ColorState, ColorDays, TableFormation, Btn
+  ],
   templateUrl: './page-list-orders.html',
   styleUrl: './page-list-orders.scss',
 })
@@ -29,6 +32,10 @@ export class PageListOrders implements OnInit {
       next: (x) => (this.orders = x),
       error: (err) => console.log(err)
     });
+  }
+
+  test(): void {
+    console.log('click ')
   }
 
 }
