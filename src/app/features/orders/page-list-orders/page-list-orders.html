@@ -1,5 +1,16 @@
 <p>page-list-orders works!</p>
 
+
+<div>Exemple Signaux</div>
+<div>Value: {{ count() }}</div>
+<div>Value x2: {{ doubleCount() }}</div>
+<app-btn (clicked)="increment()">INCREMENT</app-btn>
+<app-btn (clicked)="decrement()">DECREMENT</app-btn>
+<app-btn (clicked)="reset()">RESET</app-btn>
+
+
+
+
 <div>Exemple ngClass + bouton output</div>
 <div class="state-CANCEL">TEST NG CLASS</div>
 <div [ngClass]="{

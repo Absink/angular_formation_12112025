@@ -2,5 +2,8 @@
 <div class="container">
   <app-notif css="alert-danger" message="ERROR !"></app-notif>
   <app-notif [css]="'alert-info'" message="INFO !"></app-notif>
+  @if (display) {
+    <app-notif css="alert-success" message="Clickable !!!" (clicked)="display = false"></app-notif>
+  }
   <router-outlet></router-outlet>
 </div>

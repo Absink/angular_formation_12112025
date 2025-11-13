@@ -11,4 +11,6 @@ import { Notif } from './shared/components/notif/notif';
 })
 export class App {
 
+  display = true;
+
 }

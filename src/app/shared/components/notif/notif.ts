@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 
 @Component({
@@ -12,5 +12,11 @@ export class Notif {
 
   css = input<string>('alert-secondary');
   message = input<string | null>();
+  
+  clicked = output<void>();
+
+  onClick() {
+    this.clicked.emit();
+  }
 
 }
