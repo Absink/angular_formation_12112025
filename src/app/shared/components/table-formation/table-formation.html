@@ -1,0 +1,22 @@
+<table class="table table-primary">
+  <thead>
+    <tr>
+      @for (h of headers(); track h) {
+      <th>{{ h }}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (o of orders(); track o.id) {
+    <tr>
+      <td>{{ o.id }}</td>
+      <td>{{ o.tjmHT | currency: 'EUR' }}</td>
+      <td>{{ o.typePresta }}</td>
+      <td>{{ o.tva }}</td>
+      <td>{{ o.client }}</td>
+      <td>{{ o | total | currency: 'EUR'}}</td>
+      <td>{{ o.totalTTC() | currency: 'EUR' }}</td>
+    </tr>
+    }
+  </tbody>
+</table>

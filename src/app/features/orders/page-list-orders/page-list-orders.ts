@@ -7,10 +7,11 @@ import { TotalPipe } from '../../../shared/pipes/total.pipe';
 import { DaysPipe } from "../../../shared/pipes/days.pipe";
 import { ColorState } from '../../../shared/directives/color-state';
 import { ColorDays } from "../../../shared/directives/color-days";
+import { TableFormation } from '../../../shared/components/table-formation/table-formation';
 
 @Component({
   selector: 'app-page-list-orders',
-  imports: [CommonModule, TotalPipe, DaysPipe, ColorState, ColorDays],
+  imports: [CommonModule, TotalPipe, DaysPipe, ColorState, ColorDays, TableFormation],
   templateUrl: './page-list-orders.html',
   styleUrl: './page-list-orders.scss',
 })
@@ -21,6 +22,7 @@ export class PageListOrders implements OnInit {
 
   public id = this.route.snapshot.params['idOrder'];
   public orders: Order[] = [];
+  public enTetes: string[] = ['ID', 'TJM', 'typePresta', 'tva', 'client', 'totalHT', 'totalTTC'];
 
   ngOnInit(): void {
     this.orderService.getAll().subscribe({
