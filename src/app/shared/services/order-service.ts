@@ -20,8 +20,7 @@ export class OrderService {
     );
   }
 
-  public delete(): Observable<Order> {
-    return this.http.delete<Order>(this.api + "/1").pipe();
+  public delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.api}/${id}`);
   }
- 
 }

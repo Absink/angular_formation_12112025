@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { map, Observable, } from 'rxjs';
 import { Client } from '../models/client.model';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,7 +13,20 @@ export class ClientService {
   private http = inject(HttpClient);
 
   public getAll(): Observable<Client[]> {
-    return this.http.get<Client[]>(this.api);
+    return this.http.get<Client[]>(this.api).pipe(
+      map(datas => datas.map(
+        data => new Client(data)
+      ))
+    );
+  }
+
+  public getById(id: number): Observable<Client> {
+    return this.http.get<Client>(`${this.api}/${id}`).pipe(
+      map(data => new Client(data)));
+  }
+
+  public deleteById(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.api}/${id}`);
   }
   
 }

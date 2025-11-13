@@ -1,2 +1,6 @@
-<p>page-list-clients works!</p>
-<p>{{ clients | json }}</p>
+<p>Liste des Clients:</p>
+<ul>
+  @for (cl of clients; track cl.id) {
+    <li>Client {{ cl.id }}: {{ cl.name }}</li>
+  }
+</ul>

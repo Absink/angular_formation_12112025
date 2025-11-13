@@ -16,12 +16,8 @@ export class Navbar {
 
   login(): void {
     if (localStorage.getItem('userFormation')) {
-      this.router.navigateByUrl('/login');
-
-    }  
-
-    else
       localStorage.removeItem('userFormation');
+      this.router.navigateByUrl('/login');
+    }   
   }
-
 }

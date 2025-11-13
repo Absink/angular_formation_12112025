@@ -21,4 +21,12 @@ export class PageListClients {
       error: (err) => console.log(err)
     });
   }
+
+  remove(id: number): void {
+    this.clientService.deleteById(id).subscribe({
+      next: () => {
+        // this.clients.find(c => c.id == id);
+      }
+    });
+  }
 }

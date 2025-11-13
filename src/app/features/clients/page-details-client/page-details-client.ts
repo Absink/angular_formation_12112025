@@ -1,7 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from '../../../shared/models/client.model';
-import { StateClient } from '../../../shared/enums/state-client';
 import { CommonModule } from '@angular/common';
 import { ClientService } from '../../../shared/services/client-service';
 
@@ -17,20 +16,26 @@ export class PageDetailsClient implements OnInit {
   private router = inject(Router);
   private clientService = inject(ClientService);
 
-
   public id: number = this.route.snapshot.params['id'];
   public currentClient: Client | string = 'ID introuvable';
 
 
   ngOnInit(): void {
-    // this.clientService.getClient(this.id).subscribe({
-    //   next: (data) => this.currentClient = data,
-    //   error: (err) => this.currentClient = err
-    // })
+    this.clientService.getById(this.id).subscribe({
+      next: (data) => this.currentClient = data,
+      error: (err) => this.currentClient = err
+    });
   }
   
   goListing(): void {
     this.router.navigateByUrl('/clients');
   }
+
+  remove(): void {
+    this.clientService.deleteById(this.id).subscribe({
+      next: () => this.goListing()
+    });
+  }
+
 
 }
