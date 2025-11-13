@@ -1,8 +1,9 @@
 <p>Liste des Clients:</p>
 <ul>
-  @for (cl of clients; track cl.id) {
+  @for (cl of clients(); track cl.id) {
     <li>Client {{ cl.id }}: {{ cl.name }}</li>
   }
 </ul>
 
 <div>Total CA des clients : {{ totalCA() | currency: 'EUR' }}</div>
+<div>Total CA des clients (bonus) : {{ totalCAWithBonus() | currency: 'EUR' }}</div>
