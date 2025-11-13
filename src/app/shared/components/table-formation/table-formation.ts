@@ -13,6 +13,6 @@ export class TableFormation {
 
   // @Input() headers!: string[] = [];
   headers = input<string[]>([]);
-  orders = input<Order[]>([]);
+  // orders = input<Order[]>([]);
 
 }

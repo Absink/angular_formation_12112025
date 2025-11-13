@@ -1,29 +1,50 @@
 <p>page-list-orders works!</p>
 
+<div>Exemple ngClass</div>
+<div class="state-CANCEL">TEST NG CLASS</div>
+<div [ngClass]="{
+  'state-CANCEL': true
+}">
+</div>
+
+
+
 <div>Exemple Table Formation</div>
-<app-table-formation [headers]="enTetes" [orders]="orders"></app-table-formation>
+<app-table-formation [headers]="enTetes">
+  @for (o of orders; track o.id) {
+  <tr>
+    <td>{{ o.id }}</td>
+    <td>{{ o.tjmHT | currency: 'EUR' }}</td>
+    <td>{{ o.typePresta }}</td>
+    <td>{{ o.tva }}</td>
+    <td>{{ o.client }}</td>
+    <td>{{ o | total | currency: 'EUR'}}</td>
+    <td>{{ o.totalTTC() | currency: 'EUR' }}</td>
+  </tr>
+  }
+</app-table-formation>
 <br><br>
 
 
 <div>Exemple de Directives x2</div>
 @for (order of orders; track order.id) {
-  <div [appColorState]="order.state">{{ order.id }}: Formation sur
-    <span [appColorDays]="order.nbJours">{{ order.nbJours | days }}</span>
-  </div>
+<div [appColorState]="order.state">{{ order.id }}: Formation sur
+  <span [appColorDays]="order.nbJours">{{ order.nbJours | days }}</span>
+</div>
 }
 <br><br>
 
 
 <div>Exemple de Directive colorDays</div>
 @for (order of orders; track order.id) {
-  <div [appColorDays]="order.nbJours">{{ order.id }}: Formation sur {{ order.nbJours | days }}</div>
+<div [appColorDays]="order.nbJours">{{ order.id }}: Formation sur {{ order.nbJours | days }}</div>
 }
 <br><br>
 
 
 <div>Exemple de Directive colorState</div>
 @for (order of orders; track order.id) {
-  <div [appColorState]="order.state">{{ order.id }}: Formation sur {{ order.nbJours | days }}</div>
+<div [appColorState]="order.state">{{ order.id }}: Formation sur {{ order.nbJours | days }}</div>
 }
 <br><br>
 
@@ -50,7 +71,7 @@
 
 <div>Exemple de Pipe Jour (TP)</div>
 @for (order of orders; track order.id) {
-  <div>{{ order.id }}: Formation sur {{ order.nbJours | days }}</div>
+<div>{{ order.id }}: Formation sur {{ order.nbJours | days }}</div>
 }
 <br><br>
 
@@ -58,28 +79,28 @@
 
 <div>>Liste des orders</div>
 @for (order of orders; track order.id) {
-  <div>{{ order.id }} - {{ order .tjmHT }} </div>
+<div>{{ order.id }} - {{ order .tjmHT }} </div>
 } @empty {
-  <p>Aucun Order dispo !</p>
+<p>Aucun Order dispo !</p>
 }
 
 
 <div>>Liste des orders (TJ > 1000)</div>
 @for (order of orders; track order.id) {
-  @if(order.tjmHT > 1000) {
-    <div>{{ order.id }} - {{order .tjmHT }} </div>
-  } 
+@if(order.tjmHT > 1000) {
+<div>{{ order.id }} - {{order .tjmHT }} </div>
+}
 }
 
 
 
 <div>>Liste des orders</div>
-  <div *ngFor="let order of orders">{{ order.id }} - {{order .tjmHT }} </div>
+<div *ngFor="let order of orders">{{ order.id }} - {{order .tjmHT }} </div>
 
 
 <div>>Liste des orders (TJ > 1000)</div>
 @for (order of orders; track order.id) {
-  @if(order.tjmHT > 1000) {
-    <div>{{ order.id }} - {{order .tjmHT }} </div>
-  } 
+@if(order.tjmHT > 1000) {
+<div>{{ order.id }} - {{order .tjmHT }} </div>
+}
 }
