@@ -1,4 +1,46 @@
-<div class="d-grid gap-2">
-  <button class="btn btn-primary" type="button" (click)="login(1)">Connexion User 1</button>
-  <button class="btn btn-primary" type="button" (click)="login(2)">Connexion User 2</button>
-</div>
+<form [formGroup]="form" (ngSubmit)="login()">
+
+  <!-- LOGIN -->
+  <div class="form-group">
+    <label for="login">Login</label>
+    <input type="text" class="form-control" id="login" formControlName="login">
+
+    @if (form.get('login')?.invalid && form.get('login')?.touched) {
+    <div class="alert alert-danger">Le login est obligatoire</div>
+    }
+  </div>
+
+
+  <!-- PASSWORD -->
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" formControlName="password">
+
+    @if (form.get('password')?.touched) {
+
+    @if (form.get('password')?.errors?.['required']) {
+    <div class="alert alert-danger">Le mot de passe est obligatoire</div>
+    }
+
+    @if (form.get('password')?.errors?.['minlength']) {
+    <div class="alert alert-danger">
+      Minimum 8 caractères
+    </div>
+    }
+
+    @if (form.get('password')?.errors?.['pattern']) {
+    <div class="alert alert-danger">
+      Le mot de passe doit contenir :<br>
+      - une majuscule<br>
+      - une minuscule<br>
+      - un chiffre
+    </div>
+    }
+    }
+  </div>
+
+
+  <button type="submit" [disabled]="form.invalid" class="btn btn-primary">
+    Se connecter
+  </button>
+</form>

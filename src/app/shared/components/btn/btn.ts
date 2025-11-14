@@ -10,6 +10,7 @@ export class Btn {
 
   // @Output clicked
   clicked = output<void>();
+  
 
   onClick() {
     console.log("onClick");
