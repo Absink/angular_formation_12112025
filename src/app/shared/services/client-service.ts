@@ -28,5 +28,11 @@ export class ClientService {
   public deleteById(id: number): Observable<void> {
     return this.http.delete<void>(`${this.api}/${id}`);
   }
+
+  public add(client: Client): Observable<Client> {
+    return this.http.post<Client>(`${this.api}`, client).pipe(
+      map(client => new Client(client))
+    );
+  }
   
 }

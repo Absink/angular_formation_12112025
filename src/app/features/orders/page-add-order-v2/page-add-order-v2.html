@@ -1,0 +1,40 @@
+<app-page-generic>
+  <form [formGroup]="form" (ngSubmit)="add()">
+    <div class="form-group">
+      <label for="type">Type</label>
+      <input type="text" class="form-control" id="type" name="type" formControlName="typePresta">
+    </div>
+    <div class="form-group">
+      <label for="client">Client</label>
+      <input type="text" class="form-control" id="client" name="client" formControlName="client">
+    </div>
+    <div class="form-group">
+      <label for="nbJours">NbJours</label>
+      <input type="number" class="form-control" id="nbJours" name="nbJours" formControlName="nbJours">
+    </div>
+    <div class="form-group">
+      <label for="tva">tva</label>
+      <input type="number" class="form-control" id="tva" name="ttvape" formControlName="tva">
+    </div>
+    <div class="form-group">
+      <label for="tjmHT">tjmHT</label>
+      <input type="number" class="form-control" id="tjmHT" name="tjmHT" formControlName="tjmHT">
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select class="form-control" id="state" name="state" formControlName="state">
+        @for (s of states; track s) {
+          <option [ngValue]="s">{{ s }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="comment">Commentaire</label>
+      <textarea class="form-control" id="comment" name="comment" formControlName="comment"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+
+
+  </form>
+</app-page-generic>
