@@ -16,7 +16,7 @@ export class PageDetailsClient implements OnInit {
   private router = inject(Router);
   private clientService = inject(ClientService);
 
-  public id: number = this.route.snapshot.params['id'];
+  public id: string = this.route.snapshot.params['id'];
   public currentClient: Client | string = 'ID introuvable';
 
 

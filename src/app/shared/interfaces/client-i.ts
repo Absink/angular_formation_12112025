@@ -2,7 +2,7 @@ import { StateClient } from "../enums/state-client";
 
 export interface ClientI {
 
-  id: number;
+  id: string;
   tva: number;
   state: StateClient;
   name: string;

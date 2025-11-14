@@ -8,6 +8,18 @@
       <label for="client">Client</label>
       <input type="text" class="form-control" id="client" name="client" formControlName="client">
     </div>
+    <!-- @if (form.controls['client'].invalid && form.controls['client'].touched) {
+      <div class="alert alert-warning">Erreur de Validators !</div>
+    } -->
+    @if (form.controls['client'].errors?.['minlength'] && form.controls['client'].touched) {
+      <div class="alert alert-warning">2 caractères min !</div>
+    }
+    @if (form.controls['client'].errors?.['maxlength'] && form.controls['client'].touched) {
+      <div class="alert alert-warning">10 caractères max !</div>
+    }
+
+
+
     <div class="form-group">
       <label for="nbJours">NbJours</label>
       <input type="number" class="form-control" id="nbJours" name="nbJours" formControlName="nbJours">
@@ -33,8 +45,7 @@
       <textarea class="form-control" id="comment" name="comment" formControlName="comment"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">Envoyer</button>
-
+    <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Envoyer</button>
 
   </form>
 </app-page-generic>

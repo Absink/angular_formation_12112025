@@ -20,17 +20,23 @@ export class ClientService {
     );
   }
 
-  public getById(id: number): Observable<Client> {
+  public getById(id: string): Observable<Client> {
     return this.http.get<Client>(`${this.api}/${id}`).pipe(
       map(data => new Client(data)));
   }
 
-  public deleteById(id: number): Observable<void> {
+  public deleteById(id: string): Observable<void> {
     return this.http.delete<void>(`${this.api}/${id}`);
   }
 
   public add(client: Client): Observable<Client> {
     return this.http.post<Client>(`${this.api}`, client).pipe(
+      map(client => new Client(client))
+    );
+  }
+
+  public update(client: Client): Observable<Client> {
+    return this.http.put<Client>(`${this.api}/${client.id}`, client).pipe(
       map(client => new Client(client))
     );
   }

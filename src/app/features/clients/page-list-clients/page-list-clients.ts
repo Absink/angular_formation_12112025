@@ -4,6 +4,7 @@ import { Client } from '../../../shared/models/client.model';
 import { CurrencyPipe } from '@angular/common';
 import { PageGeneric } from '../../../shared/components/page-generic/page-generic';
 import { Btn } from "../../../shared/components/btn/btn";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-list-clients',
@@ -13,6 +14,7 @@ import { Btn } from "../../../shared/components/btn/btn";
 })
 export class PageListClients {
 
+  private router = inject(Router);
   private clientService = inject(ClientService);
 
   public clients = signal<Client[]>([]);
@@ -35,7 +37,7 @@ export class PageListClients {
     });
   }
 
-  remove(id: number): void {
+  remove(id: string): void {
     this.clientService.deleteById(id).subscribe({
       next: () => {
         this.clients.update(clients => 
@@ -44,5 +46,16 @@ export class PageListClients {
         this.message.set(`Client avec l'id ${id} supprimé avec succes !`);
       }
     });
+  }
+
+  edit(id: string): void {
+    this.router.navigateByUrl(`clients/edit/${id}`)
+  }
+
+  add(version: number): void {
+    switch(version) {
+      case 1: this.router.navigateByUrl(`clients/add/new`); break;
+      case 2: this.router.navigateByUrl(`clients/add/newV2`); break;
+    }  
   }
 }

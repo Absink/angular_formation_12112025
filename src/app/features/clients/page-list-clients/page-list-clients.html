@@ -2,14 +2,19 @@
 <p>Liste des Clients:</p>
 <ul>
   @for (cl of clients(); track cl.id) {
-    <li>Client {{ cl.id }}: {{ cl.name }}</li>
+    <li>Client {{ cl.id }}: {{ cl.name }}
+        <span (click)="edit(cl.id)"><i class="bi bi-pen-fill"></i></span>
+        <span (click)="remove(cl.id)"><i class="bi bi-trash3-fill"></i></span>
+    </li>
   }
 </ul>
+<app-btn (clicked)="add(1)">Ajouter Client (V1)</app-btn>
+<app-btn (clicked)="add(2)">Ajouter Client (V2)</app-btn>
 
 <div>Total CA des clients : {{ totalCA() | currency: 'EUR' }}</div>
 <div>Total CA des clients (bonus) : {{ totalCAWithBonus() | currency: 'EUR' }}</div>
 
-<h2>Exemple Delete + Display Notif</h2>
+<!-- <h2>Exemple Delete + Display Notif</h2>
 <div>
   <app-btn (clicked)="remove(2)">REMOVE ID 2</app-btn>
-</div>
+</div> -->

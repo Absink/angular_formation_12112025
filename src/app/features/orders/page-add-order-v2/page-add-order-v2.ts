@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OrderService } from '../../../shared/services/order-service';
 import { Order } from '../../../shared/models/order.model';
 import { PageGeneric } from '../../../shared/components/page-generic/page-generic';
@@ -23,8 +23,12 @@ export class PageAddOrderV2 implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      typePresta: [this.order.typePresta],
-      client: [this.order.client],
+      typePresta: [this.order.typePresta, Validators.required],
+      client: [this.order.client, Validators.compose([
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(10)
+      ])],
       nbJours: [this.order.nbJours],
       tva: [this.order.tva],
       tjmHT: [this.order.tjmHT],
@@ -34,7 +38,7 @@ export class PageAddOrderV2 implements OnInit {
   }
 
   public add(): void {
-    this.orderService.add(this.order).subscribe({
+    this.orderService.add(this.form.value).subscribe({
       next: data => console.log(data)
     });
   }

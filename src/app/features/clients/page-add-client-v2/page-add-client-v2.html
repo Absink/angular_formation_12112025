@@ -1,0 +1,32 @@
+<app-page-generic>
+  <form [formGroup]="form" (ngSubmit)="addOrEdit()">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" id="name" name="name" formControlName="name">
+    </div>
+    <div class="form-group">
+      <label for="ca">ca</label>
+      <input type="number" class="form-control" id="ca" name="ca" formControlName="ca">
+    </div>
+    <div class="form-group">
+      <label for="tva">tva</label>
+      <input type="number" class="form-control" id="tva" name="tva" formControlName="tva">
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select class="form-control" id="state" name="state" formControlName="state">
+        @for (s of states; track s) {
+          <option [ngValue]="s">{{ s }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="comment">Commentaire</label>
+      <textarea class="form-control" id="comment" name="comment" formControlName="comment"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+
+  </form>
+</app-page-generic>

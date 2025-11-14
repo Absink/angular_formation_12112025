@@ -3,7 +3,7 @@ import { ClientI } from "../interfaces/client-i";
 
 export class Client implements ClientI {
   
-  id!: number;
+  id!: string;
   tva!: number;
   state: StateClient = StateClient.Inactive;
   name!: string;
