@@ -1,3 +1,4 @@
+<app-page-generic css="alert-danger" [message]="message()" [display]="message() != null"></app-page-generic>
 <p>Liste des Clients:</p>
 <ul>
   @for (cl of clients(); track cl.id) {
@@ -7,3 +8,8 @@
 
 <div>Total CA des clients : {{ totalCA() | currency: 'EUR' }}</div>
 <div>Total CA des clients (bonus) : {{ totalCAWithBonus() | currency: 'EUR' }}</div>
+
+<h2>Exemple Delete + Display Notif</h2>
+<div>
+  <app-btn (clicked)="remove(2)">REMOVE ID 2</app-btn>
+</div>
