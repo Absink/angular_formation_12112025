@@ -23,4 +23,10 @@ export class OrderService {
   public delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.api}/${id}`);
   }
+
+  public add(order: Order): Observable<Order> {
+    return this.http.post<Order>(`${this.api}`, order).pipe(
+      map(order => new Order(order))
+    );
+  }
 }

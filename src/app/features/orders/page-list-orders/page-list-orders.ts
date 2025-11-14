@@ -1,5 +1,5 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from '../../../shared/models/order.model';
 import { CommonModule } from '@angular/common';
 import { OrderService } from '../../../shared/services/order-service';
@@ -21,6 +21,7 @@ import { Btn } from '../../../shared/components/btn/btn';
 export class PageListOrders implements OnInit {
 
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   private orderService = inject(OrderService);
 
   public id = this.route.snapshot.params['idOrder'];
@@ -37,6 +38,10 @@ export class PageListOrders implements OnInit {
       next: (x) => (this.orders = x),
       error: (err) => console.log(err)
     });
+  }
+
+  goAdd(): void {
+    this.router.navigateByUrl('orders/new/add');
   }
 
   test(): void {
